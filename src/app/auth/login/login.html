@@ -1,1 +1,29 @@
-<p>login works!</p>
+<form class="p-fluid flex flex-column gap-3 w-full" (ngSubmit)="login()">
+
+  <!-- Email -->
+  <div class="flex flex-column gap-2 w-full">
+    <label for="email" class="font-medium">Email</label>
+    <p-inputGroup class="w-full">
+      <p-inputGroupAddon>
+        <i class="pi pi-envelope"></i>
+      </p-inputGroupAddon>
+      <input pInputText id="email" type="email" class="w-full" placeholder="Entrez votre email" [(ngModel)]="email" name="email" autocomplete="email" />
+    </p-inputGroup>
+  </div>
+
+  <!-- Password -->
+  <div class="flex flex-column gap-2 w-full">
+    <label for="password" class="font-medium">Mot de passe</label>
+    <p-inputGroup class="w-full">
+      <p-inputGroupAddon>
+        <i class="pi pi-lock"></i>
+      </p-inputGroupAddon>
+      <input pInputText id="password" type="password" class="w-full" placeholder="Entrez votre mot de passe" [(ngModel)]="password" name="password" autocomplete="current-password" />
+    </p-inputGroup>
+  </div>
+
+  <!-- Button -->
+  <button pButton type="submit" class="w-full" label="Se connecter" icon="pi pi-sign-in" [disabled]="!email || !password">
+  </button>
+
+</form>
