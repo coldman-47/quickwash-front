@@ -17,6 +17,11 @@ import { MapSearch } from './map-search/map-search';
 import { InputTextModule } from 'primeng/inputtext';
 import { InputOtpModule } from 'primeng/inputotp';
 import { DatePickerModule } from 'primeng/datepicker';
+import { DialogModule } from 'primeng/dialog';
+import { DrawerModule } from 'primeng/drawer';
+import { TabsModule } from 'primeng/tabs';
+import { Login } from '../auth/login/login';
+import { Register } from '../auth/register/register';
 
 @NgModule({
   declarations: [Layout, NewWash],
@@ -37,7 +42,12 @@ import { DatePickerModule } from 'primeng/datepicker';
     FluidModule,
     InputTextModule,
     InputOtpModule,
-    DatePickerModule
+    DatePickerModule,
+    DialogModule,
+    DrawerModule,
+    TabsModule,
+    Login,
+    Register
   ],
   exports: [Layout, NewWash],
 })

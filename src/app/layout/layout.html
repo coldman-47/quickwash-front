@@ -5,7 +5,7 @@
                 <h5 class="m-auto">QuickWash</h5>
             </div>
             <div class="col-6 d-flex "> <p-menubar class="ms-auto" [model]="items" /></div>
-            <div class="col-3 d-flex"><button pButton class="m-auto"><i class="pi pi-power-off"></i></button></div>
+            <div class="col-3 d-flex"><button (click)="visible = true" pButton class="m-auto"><i class="pi pi-power-off"></i></button></div>
 
         </div>
     </header>
@@ -19,3 +19,20 @@
     </div>
 
 </div>
+
+<p-drawer position="right" header="Authentification" [(visible)]="visible">
+    <p-tabs value="0">
+                <p-tablist>
+                    <p-tab value="0">Connexion</p-tab>
+                    <p-tab value="1">Inscription</p-tab>
+                </p-tablist>
+                <p-tabpanels>
+                    <p-tabpanel value="0">
+                        <app-login></app-login>
+                    </p-tabpanel>
+                    <p-tabpanel value="1">
+                        <app-register></app-register>
+                    </p-tabpanel>
+                </p-tabpanels>
+            </p-tabs>
+</p-drawer>

@@ -11,6 +11,7 @@ import { MenuItem } from 'primeng/api';
 export class Layout {
 
   items: MenuItem[] = [];
+  visible = false;
 
   constructor() {
     this.items = [
