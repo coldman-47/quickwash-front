@@ -24,9 +24,10 @@ import { Login } from '../auth/login/login';
 import { Register } from '../auth/register/register';
 import { ToastModule } from 'primeng/toast';
 import { MessageService } from 'primeng/api';
+import { List } from './wash/list/list';
 
 @NgModule({
-  declarations: [Layout, NewWash],
+  declarations: [Layout, NewWash, List],
   imports: [
     CommonModule,
     MenubarModule,
@@ -52,6 +53,6 @@ import { MessageService } from 'primeng/api';
     Register,
     ToastModule
   ],
-  exports: [Layout, NewWash],
+  exports: [Layout, NewWash, List],
 })
 export class LayoutModule {}
