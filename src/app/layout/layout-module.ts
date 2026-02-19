@@ -22,6 +22,8 @@ import { DrawerModule } from 'primeng/drawer';
 import { TabsModule } from 'primeng/tabs';
 import { Login } from '../auth/login/login';
 import { Register } from '../auth/register/register';
+import { ToastModule } from 'primeng/toast';
+import { MessageService } from 'primeng/api';
 
 @NgModule({
   declarations: [Layout, NewWash],
@@ -47,7 +49,8 @@ import { Register } from '../auth/register/register';
     DrawerModule,
     TabsModule,
     Login,
-    Register
+    Register,
+    ToastModule
   ],
   exports: [Layout, NewWash],
 })

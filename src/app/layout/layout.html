@@ -1,38 +1,44 @@
 <div id="app" class="h-100 w-100 px-5 py-4">
-    <header>
-        <div class="row p-2">
-            <div class="col-3 d-flex">
-                <h5 class="m-auto">QuickWash</h5>
-            </div>
-            <div class="col-6 d-flex "> <p-menubar class="ms-auto" [model]="items" /></div>
-            <div class="col-3 d-flex"><button (click)="visible = true" pButton class="m-auto"><i class="pi pi-power-off"></i></button></div>
 
-        </div>
-    </header>
+  <p-toast position="top-right"></p-toast>
 
-    <div id="main">
-        <div class="row">
-            <div class="col-5">
-                <app-new-wash></app-new-wash>
-            </div>
-        </div>
+
+  <header>
+    <div class="row p-2">
+      <div class="col-3 d-flex">
+        <h5 class="m-auto">QuickWash</h5>
+      </div>
+      <div class="col-6 d-flex ">
+        <p-menubar class="ms-auto" [model]="items" />
+      </div>
+      <div class="col-3 d-flex"><button (click)="visible = true" pButton class="m-auto"><i class="pi pi-power-off"></i></button></div>
+
     </div>
+  </header>
+
+  <div id="main">
+    <div class="row">
+      <div class="col-5">
+        <app-new-wash></app-new-wash>
+      </div>
+    </div>
+  </div>
 
 </div>
 
 <p-drawer position="right" header="Authentification" [(visible)]="visible">
-    <p-tabs value="0">
-                <p-tablist>
-                    <p-tab value="0">Connexion</p-tab>
-                    <p-tab value="1">Inscription</p-tab>
-                </p-tablist>
-                <p-tabpanels>
-                    <p-tabpanel value="0">
-                        <app-login></app-login>
-                    </p-tabpanel>
-                    <p-tabpanel value="1">
-                        <app-register></app-register>
-                    </p-tabpanel>
-                </p-tabpanels>
-            </p-tabs>
+  <p-tabs value="0">
+    <p-tablist>
+      <p-tab value="0">Connexion</p-tab>
+      <p-tab value="1">Inscription</p-tab>
+    </p-tablist>
+    <p-tabpanels>
+      <p-tabpanel value="0">
+        <app-login (success)="onAuthSuccess()"></app-login>
+      </p-tabpanel>
+      <p-tabpanel value="1">
+        <app-register (success)="onAuthSuccess()"></app-register>
+      </p-tabpanel>
+    </p-tabpanels>
+  </p-tabs>
 </p-drawer>

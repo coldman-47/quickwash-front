@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { InputTextModule } from 'primeng/inputtext';
 import { ButtonModule } from 'primeng/button';
@@ -16,17 +16,20 @@ import { AuthService } from '../../core/services/auth/auth.service';
   standalone:true,
 })
 export class Login {
+  @Output() success = new EventEmitter<void>();
+
   email = '';
   password = '';
 
-  constructor(private authService:AuthService) {}
-
+  constructor(private authService: AuthService) { }
+  
   login() {
     this.authService
       .login({ email: this.email, password: this.password })
       .subscribe({
         next: (response) => {
           console.log('Login success', response);
+          this.success.emit();
         },
         error: (err) => {
           console.error('Login failed', err);

@@ -1,19 +1,18 @@
 import { Component } from '@angular/core';
-import { MenuItem } from 'primeng/api';
-
+import { MenuItem, MessageService } from 'primeng/api';
 
 @Component({
-  selector: 'app-layout',
-  templateUrl: './layout.html',
-  styleUrl: './layout.scss',
-  standalone: false,
+    selector: 'app-layout',
+    templateUrl: './layout.html',
+    styleUrl: './layout.scss',
+    standalone: false,
 })
 export class Layout {
 
-  items: MenuItem[] = [];
-  visible = false;
+    items: MenuItem[] = [];
+    visible = false;
 
-  constructor() {
+  constructor(private messageService: MessageService) {
     this.items = [
             {
                 label: 'Home',
@@ -56,6 +55,15 @@ export class Layout {
                 label: 'Contact',
             }
         ];
+    }
+    
+  onAuthSuccess() {
+      this.visible = false;
+      this.messageService.add({
+      severity: 'success',
+      summary: 'Succès',
+      detail: 'Authentification réussie',
+      life: 3000
+    });
   }
-
 }

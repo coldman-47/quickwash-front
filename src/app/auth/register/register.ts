@@ -1,11 +1,10 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { InputTextModule } from 'primeng/inputtext';
 import { ButtonModule } from 'primeng/button';
 import { InputGroupModule } from 'primeng/inputgroup';
 import { InputGroupAddonModule } from 'primeng/inputgroupaddon';
 import { FormsModule } from '@angular/forms';
 import { AuthService } from '../../core/services/auth/auth.service';
-
 
 @Component({
   selector: 'app-register',
@@ -14,6 +13,8 @@ import { AuthService } from '../../core/services/auth/auth.service';
   styleUrl: './register.scss',
 })
 export class Register {
+  @Output() success = new EventEmitter<void>();
+
   firstName = '';
   lastName = '';
   email = '';
@@ -30,7 +31,11 @@ export class Register {
     };
 
     this.authService.register(payload).subscribe({
-      next: (res) => console.log('Register OK', res),
+      next: (res) => { 
+        console.log('Register OK', res);
+        this.success.emit();
+      },
+
       error: (err) => {
         console.error('Register failed', err.status, err.error);
       }
