@@ -1,0 +1,156 @@
+<div class="py-3">
+  <p-card id="container" class="fadeinleft animation-duration-1000">
+    <p-stepper [value]="1" [linear]="true">
+      <p-step-item [value]="1">
+        <p-step>Vêtements</p-step>
+        <p-step-panel>
+          <ng-template #content let-activateCallback="activateCallback">
+            <div class="flex justify-content-center flex-col h-48 gap-1 flex-wrap">
+              <p-card
+                *ngFor="let category of catLabels"
+                class="categories {{ categories[category] ? 'selected' : '' }}"
+                [header]="category"
+              >
+                <div class="d-flex">
+                  <img
+                    class="m-auto"
+                    [src]="'assets/icons/' + category + '.png'"
+                    height="35"
+                    alt=""
+                  />
+                </div>
+                <ng-template #footer>
+                  <p-inputnumber
+                    size="small"
+                    placeholder="1"
+                    [showButtons]="true"
+                    buttonLayout="horizontal"
+                    [(ngModel)]="categories[category]"
+                    [min]="0"
+                  >
+                  </p-inputnumber>
+                </ng-template>
+              </p-card>
+            </div>
+            <div class="py-3">
+              <p-button
+                size="small"
+                [rounded]="true"
+                icon="pi pi-arrow-right"
+                (onClick)="activateCallback(2)"
+              />
+            </div>
+          </ng-template>
+        </p-step-panel>
+      </p-step-item>
+      <p-step-item [value]="2">
+        <p-step>Lavage</p-step>
+        <p-step-panel>
+          <ng-template #content let-activateCallback="activateCallback">
+            <div class="h-48">
+              <div class="row">
+                <div class="col-md-7">
+                  <label for="">Type de lavage </label>
+                  <p-selectbutton
+                    [options]="stateOptions"
+                    optionLabel="label"
+                    optionValue="value"
+                    aria-labelledby="basic"
+                  />
+                </div>
+                <div class="col-md-5">
+                  <label for="">Poids</label>
+                  <p-inputnumber fluid />
+                </div>
+              </div>
+              <div class="row p-3">
+                <div class="col-sm-6">
+                  <h6>Température {{ temperature }}°C</h6>
+                  <p-slider [min]="30" [max]="90" [(ngModel)]="temperature" [step]="5"></p-slider>
+                </div>
+                <div class="col-sm-6">
+                  <h6 for="">Couleurs</h6>
+                  <div class="flex flex-wrap gap-4">
+                    <div class="flex items-center">
+                      <p-radiobutton
+                        name="colors"
+                        value="1"
+                        [(ngModel)]="colors"
+                        inputId="ingredient1"
+                      />
+                      <label for="ingredient1" class="ml-2">1</label>
+                    </div>
+                    <div class="flex items-center">
+                      <p-radiobutton
+                        name="colors"
+                        value="2"
+                        [(ngModel)]="colors"
+                        inputId="ingredient2"
+                      />
+                      <label for="ingredient2" class="ml-2">2</label>
+                    </div>
+                    <div class="flex items-center">
+                      <p-radiobutton
+                        name="colors"
+                        value="3"
+                        [(ngModel)]="colors"
+                        inputId="ingredient3"
+                      />
+                      <label for="ingredient3" class="ml-2">3+</label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="flex p3-6 gap-2">
+              <p-button
+                severity="secondary"
+                [rounded]="true"
+                size="small"
+                icon="pi pi-arrow-left"
+                (onClick)="activateCallback(1)"
+              />
+              <p-button
+                [rounded]="true"
+                size="small"
+                icon="pi pi-arrow-right"
+                (onClick)="activateCallback(3)"
+              />
+            </div>
+          </ng-template>
+        </p-step-panel>
+      </p-step-item>
+      <p-step-item [value]="3">
+        <p-step>Livraison</p-step>
+        <p-step-panel>
+          <ng-template #content let-activateCallback="activateCallback">
+            <div class="h-48">
+                
+                <div class="row">
+                    <div class="form-group mt-2">
+                        <label for="otp">Code Postal</label>
+                        <p-inputotp [length]="5"></p-inputotp>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-5">
+                        <label for="">Ville</label>
+                        <input type="text" pInputText fluid />
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-5">
+                      <label for="">Date de livraison</label>
+                      <p-datepicker fluid></p-datepicker>
+                    </div>
+                </div>
+            </div>
+            <div class="py-6">
+              <p-button label="Back" severity="secondary" (onClick)="activateCallback(2)" />
+            </div>
+          </ng-template>
+        </p-step-panel>
+      </p-step-item>
+    </p-stepper>
+  </p-card>
+</div>

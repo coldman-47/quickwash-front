@@ -1,0 +1,18 @@
+#app {
+  background-image: url('/assets/image.png');
+  background-size: cover;
+  background-position: bottom center;
+}
+
+header, .p-card {
+  background-color: rgba(255, 255, 255, 0.5);
+  backdrop-filter: blur(10px);
+  border-radius: 20px;
+  box-shadow: none;
+}
+
+:host ::ng-deep .p-menubar {
+  margin: auto .75em;
+  background-color: transparent;
+  border: 0;
+}
