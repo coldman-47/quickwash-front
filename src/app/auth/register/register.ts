@@ -4,6 +4,7 @@ import { ButtonModule } from 'primeng/button';
 import { InputGroupModule } from 'primeng/inputgroup';
 import { InputGroupAddonModule } from 'primeng/inputgroupaddon';
 import { FormsModule } from '@angular/forms';
+import { AuthService } from '../../core/services/auth/auth.service';
 
 
 @Component({
@@ -18,6 +19,8 @@ export class Register {
   email = '';
   password = '';
 
+  constructor(private authService:AuthService) {}
+
   register() {
     const payload = {
       firstName: this.firstName.trim(),
@@ -26,6 +29,11 @@ export class Register {
       password: this.password,
     };
 
-    console.log(payload);
+    this.authService.register(payload).subscribe({
+      next: (res) => console.log('Register OK', res),
+      error: (err) => {
+        console.error('Register failed', err.status, err.error);
+      }
+    });
   }
 }
