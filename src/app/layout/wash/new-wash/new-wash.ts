@@ -20,7 +20,9 @@ export class NewWash {
     pull:0,
     sweater:0
   }
-  wash: any = []
+
+  wash: any;
+  
   stateOptions: any[] = [
     { label: 'Machine', value: 'machine' },
     { label: 'À la main', value: 'hand' },
