@@ -1,1 +1,38 @@
-<p>register works!</p>
+<form class="p-fluid flex flex-column gap-3 w-full" (ngSubmit)="register()">
+
+  <div class="flex flex-column gap-1">
+    <label for="firstName" class="text-sm font-medium">Prénom</label>
+    <p-inputGroup>
+      <p-inputGroupAddon><i class="pi pi-user"></i></p-inputGroupAddon>
+      <input pInputText id="firstName" class="w-full p-inputtext-sm" placeholder="Prénom" [(ngModel)]="firstName" name="firstName" />
+    </p-inputGroup>
+  </div>
+
+  <div class="flex flex-column gap-1">
+    <label for="lastName" class="text-sm font-medium">Nom</label>
+    <p-inputGroup>
+      <p-inputGroupAddon><i class="pi pi-user"></i></p-inputGroupAddon>
+      <input pInputText id="lastName" class="w-full p-inputtext-sm" placeholder="Nom" [(ngModel)]="lastName" name="lastName" />
+    </p-inputGroup>
+  </div>
+
+  <div class="flex flex-column gap-1">
+    <label for="email" class="text-sm font-medium">E-mail</label>
+    <p-inputGroup>
+      <p-inputGroupAddon><i class="pi pi-envelope"></i></p-inputGroupAddon>
+      <input pInputText id="email" type="email" class="w-full p-inputtext-sm" placeholder="E-mail" [(ngModel)]="email" name="email" />
+    </p-inputGroup>
+  </div>
+
+  <div class="flex flex-column gap-1">
+    <label for="password" class="text-sm font-medium">Mot de passe</label>
+    <p-inputGroup>
+      <p-inputGroupAddon><i class="pi pi-lock"></i></p-inputGroupAddon>
+      <input pInputText id="password" type="password" class="w-full p-inputtext-sm" placeholder="Mot de passe" [(ngModel)]="password" name="password" />
+    </p-inputGroup>
+  </div>
+
+  <button pButton type="submit" class="w-full p-button-sm mt-2" label="Créer un compte" icon="pi pi-user-plus" [disabled]="!firstName || !lastName || !email || !password">
+  </button>
+
+</form>
