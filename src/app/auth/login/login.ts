@@ -5,6 +5,7 @@ import { ButtonModule } from 'primeng/button';
 import { FloatLabelModule } from 'primeng/floatlabel';
 import { InputGroupModule } from 'primeng/inputgroup';
 import { InputGroupAddonModule } from 'primeng/inputgroupaddon';
+import { AuthService } from '../../core/services/auth/auth.service';
 
 
 @Component({
@@ -18,8 +19,18 @@ export class Login {
   email = '';
   password = '';
 
+  constructor(private authService:AuthService) {}
 
-   login() {
-    console.log(this.email, this.password);
+  login() {
+    this.authService
+      .login({ email: this.email, password: this.password })
+      .subscribe({
+        next: (response) => {
+          console.log('Login success', response);
+        },
+        error: (err) => {
+          console.error('Login failed', err);
+        }
+      });
   }
 }
