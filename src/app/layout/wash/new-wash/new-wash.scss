@@ -1,16 +1,18 @@
 ::ng-deep #container {
-  background-color: rgba(255, 255, 255, 0.5);
+  background: linear-gradient(#f0f8ffad, #f0ffff59);
   backdrop-filter: blur(10px);
   border-radius: 20px;
   box-shadow: none;
+  border: solid .75px white
 }
 
 .categories{
     width: 7.5em;
     box-shadow: none;
-    border: dashed .5px grey;
+    border: dashed 1.5px grey;
     background-color: transparent;
     transform: rotate(5deg);
+    mix-blend-mode: color-burn;
 
     &.selected{
         background-color: white;
@@ -39,9 +41,10 @@ label{
     .p-card-title{
         text-align: center;
         font-size: .85em;
-        font-weight: 300;
+        font-weight: 500;
         margin-top: .125em;
         text-transform: capitalize;
+        color: #071a2c;
     }
     .p-card-body{
         padding: 0;
@@ -61,5 +64,11 @@ label{
     .p-inputnumber-button {
         width: 1.5em;
         border: none !important;
+    }
+
+    .p-card{
+        background: transparent;
+        backdrop-filter: blur(10px);
+        box-shadow: 1px 0px 8px -5px white inset
     }
 }

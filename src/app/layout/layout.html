@@ -1,21 +1,22 @@
-<div id="app" class="h-100 w-100 px-5 py-4">
+<div id="app" class="h-100 w-100">
+  <video src="assets/background.mp4" autoplay muted loop></video>
 
   <p-toast position="top-right"></p-toast>
 
-  <header>
+  <header class="mx-4 mt-4">
     <div class="row p-2">
-      <div class="col-3 d-flex">
-        <h5 class="m-auto">QuickWash</h5>
+      <div class="col-3 d-flex ps-4">
+        <h5 class="my-auto">QuickWash</h5>
       </div>
       <div class="col-6 d-flex ">
         <p-menubar class="ms-auto" [model]="items" />
       </div>
-      <div class="col-3 d-flex"><button (click)="visible = true" pButton class="m-auto"><i class="pi pi-power-off"></i></button></div>
+      <div class="col-3 d-flex pe-4"><button (click)="visible = true" pButton class="ms-auto"><i class="pi pi-power-off"></i></button></div>
 
     </div>
   </header>
 
-  <div id="main">
+  <div id="main" class="p-4">
     <div class="row">
       <div class="col-md-5">
         <app-new-wash></app-new-wash>
