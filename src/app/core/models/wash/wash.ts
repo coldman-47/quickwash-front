@@ -1,6 +1,5 @@
-export interface Wash {
-  id: string;
-  date: Date;
+export class Wash {
+  id?: string;
   clothes: {
     bonnet?: number;
     chaussette?: number;
@@ -14,8 +13,15 @@ export interface Wash {
     sweater?: number;
   };
   weight: number;
-  temperature: number;
-  washType: 'machine' | 'hand' | 'dry';
-  colors: number;
-  detergent?: string;
+  temperature?: number;
+  washType?: 'machine' | 'hand' | 'dry';
+  reference?: string;
+  createdAt?: Date;
+  colors?: number;
+
+  constructor(clothes: any, weight: number) {
+    this.clothes = clothes;
+    this.weight = weight;
+  }
+  
 }

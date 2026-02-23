@@ -7,5 +7,9 @@
         backdrop-filter: blur(15px);
         background: linear-gradient(#f0f5f9ad, #f0ffff66)
       }
+
+      .p-card-body{
+        padding: .25em;
+      }
   }
 }

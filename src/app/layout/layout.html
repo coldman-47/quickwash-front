@@ -12,9 +12,22 @@
       </div>
       <div class="col-3 d-flex pe-4">
         <span class="ms-auto my-auto">
-          <button rounded="" (click)="visible = true" pButton>
-            <i class="pi pi-power-off"></i></button
-        ></span>
+          <button *ngIf="!user; else logout" rounded="" (click)="visible = true" pButton>
+            <i class="pi pi-power-off"></i>
+          </button>
+          <ng-template #logout>
+            <div class="flex gap-3 align-items-center">
+              <span class="ms-2"
+                ><p-avatar shape="circle" rounded class="me-2 bg-tertiary raised">
+                  <i class="pi pi-user"></i></p-avatar
+                >{{ user?.firstName }} {{ user?.lastName }}</span
+              >
+              <button rounded="" pButton>
+                <i class="pi pi-sign-out"></i>
+              </button>
+            </div>
+          </ng-template>
+        </span>
       </div>
     </div>
   </header>

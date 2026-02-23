@@ -1,5 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectorRef } from '@angular/core';
 import { WashService } from '../../../core/services/wash/wash.service';
+import { Wash } from '../../../core/models/wash/wash';
+import { AuthService } from '../../../core/services/auth/auth.service';
 
 @Component({
   selector: 'app-details',
@@ -22,13 +24,24 @@ export class Details {
       status: 'pending',
     },
   ];
-  visible = false
+  visible = false;
+  laundry: Wash | null = null;
+  user: any;
 
-  constructor(private srv: WashService) {
+  constructor(private srv: WashService, cdr: ChangeDetectorRef, authSrv: AuthService) {
+    authSrv.user.subscribe({
+      next: (user) => {
+        this.user = user;
+      },
+    });
     srv.details.subscribe({
       next: (val) => {
-        if(val) this.visible = true
-      }
-    })
+        console.log(val);
+        
+        this.laundry = val;
+        // cdr.detectChanges();
+        if (val) this.visible = true;
+      },
+    });
   }
 }

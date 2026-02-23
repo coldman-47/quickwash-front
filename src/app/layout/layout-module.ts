@@ -29,6 +29,8 @@ import { DataViewModule } from 'primeng/dataview';
 import { TagModule } from 'primeng/tag';
 import { TimelineModule } from 'primeng/timeline';
 import { Details } from './wash/details/details';
+import { PanelModule } from 'primeng/panel';
+import { AvatarModule } from 'primeng/avatar';
 
 @NgModule({
   declarations: [Layout, NewWash, List, Details],
@@ -59,6 +61,9 @@ import { Details } from './wash/details/details';
     DataViewModule,
     TagModule,
     TimelineModule,
+    ToastModule,
+    PanelModule,
+    AvatarModule
   ],
   exports: [Layout, NewWash, List, Details],
 })

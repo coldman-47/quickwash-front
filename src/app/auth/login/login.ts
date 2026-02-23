@@ -27,8 +27,10 @@ export class Login {
     this.authService
       .login({ email: this.email, password: this.password })
       .subscribe({
-        next: (response) => {
+        next: (response: any) => {
           console.log('Login success', response);
+          this.authService.user.next(response.user);
+          this.authService.token.next(response.access_token);
           this.success.emit();
         },
         error: (err) => {

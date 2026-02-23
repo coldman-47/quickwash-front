@@ -1,9 +1,28 @@
 <div class="py-3 h-100">
-  <p-card class="h-100 fadeinright animation-duration-500" header="Détails de la lessive" *ngIf="visible">
-    <p-timeline [value]="steps">
+  <p-card
+    class="h-100 fadeinright animation-duration-500"
+    header="Détails de la lessive"
+    *ngIf="visible"
+  >
+    <ng-template #subtitle>Ref. {{ laundry?.reference }}</ng-template>
+    <p-panel>
+      <p class="flex gap-2 align-items-center"><i class="pi pi-box"> </i>Poids(kg): {{ laundry?.weight }}</p>
+      <p class="flex gap-2 align-items-center"><i class="pi pi-palette"> </i>Couleur(s): {{ laundry?.colors }}</p>
+      {{ laundry?.clothes | json }}
+    </p-panel>
+    <p-timeline [value]="steps" *ngIf="user.role === 'customer' else admin">
       <ng-template #content let-event>
         {{ event.status }}
       </ng-template>
     </p-timeline>
+    <ng-template #admin>
+        <div class="flex items-center">
+                <p-checkbox inputId="ingredient1" name="status" value="Cheese" />
+                <label for="ingredient1" class="ml-2"> Acceptée </label>
+            </div>
+    </ng-template>
+    <ng-template #footer>
+      Créé le {{ laundry?.createdAt | date: 'dd/MM/yyyy à h:mm' }}
+    </ng-template>
   </p-card>
 </div>

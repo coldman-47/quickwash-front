@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { Wash } from '../../../core/models/wash/wash';
 import { WashService } from '../../../core/services/wash/wash.service';
 
@@ -8,42 +8,34 @@ import { WashService } from '../../../core/services/wash/wash.service';
   styleUrl: './list.scss',
   standalone: false,
 })
-export class List {
+export class List implements OnInit {
   washList: Wash[] = [];
 
-  constructor(private srv: WashService) {
-    this.washList.push({
-      id: '1',
-      date: new Date(),
-      clothes: {
-        bonnet: 1,
-        chaussette: 2,
-        debardeur: 1,
-        manteau: 1,
-        tshirt: 2
+  constructor(
+    private srv: WashService,
+    private cdr: ChangeDetectorRef,
+  ) {
+    srv.newWash.subscribe({
+      next: (val) => {
+        this.washList.push(val);
+        this.cdr.detectChanges();
       },
-      weight: 5,
-      temperature: 40,
-      washType: 'machine',
-      colors: 2,
-    });this.washList.push({
-      id: '1',
-      date: new Date(),
-      clothes: {
-        bonnet: 1,
-        chaussette: 2,
-        debardeur: 1,
-        manteau: 1,
-        tshirt: 2
-      },
-      weight: 5,
-      temperature: 40,
-      washType: 'machine',
-      colors: 2,
     });
   }
 
-  peek(){
-    this.srv.details.next(this.washList[0]);
+  ngOnInit(): void {
+    this.srv.getAll().subscribe({
+      next: (val) => {
+        this.washList = val;
+        this.cdr.detectChanges();
+      },
+      error: (err) => {
+        console.error(err);
+      },
+    });
+  }
+
+  peek(laundry: Wash) {
+    this.srv.details.next(laundry);
   }
 }

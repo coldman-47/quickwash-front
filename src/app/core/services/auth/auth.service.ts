@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { BehaviorSubject } from 'rxjs';
 
 
 @Injectable({
@@ -7,6 +8,8 @@ import { HttpClient } from '@angular/common/http';
 })
 export class AuthService {
   private apiUrl = 'http://localhost:3000';
+  user = new BehaviorSubject(null);
+  token = new BehaviorSubject(null);
 
   constructor(private http: HttpClient) {}
 

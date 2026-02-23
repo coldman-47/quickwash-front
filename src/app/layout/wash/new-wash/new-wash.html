@@ -58,17 +58,18 @@
                     optionLabel="label"
                     optionValue="value"
                     aria-labelledby="basic"
+                    [(ngModel)]="wash.washType"
                   />
                 </div>
                 <div class="col-md-4">
                   <label for="">Poids</label>
-                  <p-inputnumber placeholder="Poids en kg" fluid variant="filled" />
+                  <p-inputnumber placeholder="Poids en kg" fluid variant="filled" [(ngModel)]="wash.weight" />
                 </div>
               </div>
               <div class="row p-3">
                 <div class="col-sm-6 flex flex-column gap-3">
-                  <h6>Température {{ temperature }}°C</h6>
-                  <p-slider [min]="30" [max]="90" [(ngModel)]="temperature" [step]="5"></p-slider>
+                  <h6>Température {{ wash.temperature }}°C</h6>
+                  <p-slider [min]="30" [max]="90" [(ngModel)]="wash.temperature" [step]="5"></p-slider>
                 </div>
                 <div class="col-sm-6">
                   <h6 for="">Couleurs</h6>
@@ -77,7 +78,7 @@
                       <p-radiobutton
                         name="colors"
                         value="1"
-                        [(ngModel)]="colors"
+                        [(ngModel)]="wash.colors"
                         inputId="ingredient1"
                       />
                       <label for="ingredient1" class="ml-2">1</label>
@@ -95,7 +96,7 @@
                       <p-radiobutton
                         name="colors"
                         value="3"
-                        [(ngModel)]="colors"
+                        [(ngModel)]="wash.colors"
                         inputId="ingredient3"
                       />
                       <label for="ingredient3" class="ml-2">3+</label>
@@ -168,7 +169,7 @@
                 />
               </span>
               <span class="pe-3">
-                <p-button rounded=""><i class="pi pi-check-circle"></i></p-button>
+                <p-button (onClick)="create()" rounded=""><i class="pi pi-check-circle"></i></p-button>
             </span>
             </div>
           </ng-template>
