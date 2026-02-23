@@ -23,7 +23,7 @@ export class NewWash {
 
   wash: any;
   
-  stateOptions: any[] = [
+  washType: any[] = [
     { label: 'Machine', value: 'machine' },
     { label: 'À la main', value: 'hand' },
     { label: 'À sec', value: 'dry' }

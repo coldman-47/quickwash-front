@@ -1,0 +1,9 @@
+<div class="py-3 h-100">
+  <p-card class="h-100 fadeinright animation-duration-500" header="Détails de la lessive" *ngIf="visible">
+    <p-timeline [value]="steps">
+      <ng-template #content let-event>
+        {{ event.status }}
+      </ng-template>
+    </p-timeline>
+  </p-card>
+</div>

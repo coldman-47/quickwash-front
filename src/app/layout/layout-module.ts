@@ -25,9 +25,13 @@ import { Register } from '../auth/register/register';
 import { ToastModule } from 'primeng/toast';
 import { MessageService } from 'primeng/api';
 import { List } from './wash/list/list';
+import { DataViewModule } from 'primeng/dataview';
+import { TagModule } from 'primeng/tag';
+import { TimelineModule } from 'primeng/timeline';
+import { Details } from './wash/details/details';
 
 @NgModule({
-  declarations: [Layout, NewWash, List],
+  declarations: [Layout, NewWash, List, Details],
   imports: [
     CommonModule,
     MenubarModule,
@@ -51,8 +55,11 @@ import { List } from './wash/list/list';
     TabsModule,
     Login,
     Register,
-    ToastModule
+    ToastModule,
+    DataViewModule,
+    TagModule,
+    TimelineModule,
   ],
-  exports: [Layout, NewWash, List],
+  exports: [Layout, NewWash, List, Details],
 })
 export class LayoutModule {}

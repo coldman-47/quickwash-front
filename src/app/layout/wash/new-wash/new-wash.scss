@@ -1,5 +1,5 @@
 ::ng-deep #container {
-  background: linear-gradient(#f0f8ffad, #f0ffff59);
+  background: linear-gradient(#f0f8ffc4, #f0ffff27);
   backdrop-filter: blur(10px);
   border-radius: 20px;
   box-shadow: none;
@@ -12,7 +12,7 @@
     border: dashed 1.5px grey;
     background-color: transparent;
     transform: rotate(5deg);
-    mix-blend-mode: color-burn;
+    // mix-blend-mode: color-burn;
 
     &.selected{
         background-color: white;
@@ -38,10 +38,10 @@ label{
         background: transparent;
     }
 
-    .p-card-title{
+    .categories .p-card-title{
         text-align: center;
         font-size: .85em;
-        font-weight: 500;
+        font-weight: 300;
         margin-top: .125em;
         text-transform: capitalize;
         color: #071a2c;
@@ -69,6 +69,7 @@ label{
     .p-card{
         background: transparent;
         backdrop-filter: blur(10px);
-        box-shadow: 1px 0px 8px -5px white inset
+        box-shadow: 1px 0px 8px -5px white inset;
+        border: solid .75px white;
     }
 }

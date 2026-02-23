@@ -1,1 +1,27 @@
-<p>list works!</p>
+<div class="py-3 h-100">
+  <p-card header="Historique" class="h-100">
+    <p-dataView #dv [value]="washList" filterBy="filterBy">
+      <p-header> Historique de vos lavages </p-header>
+      <ng-template let-w #list>
+        <div *ngFor="let item of w" class="flex mb-3">
+          <p-card class="w-100">
+            <div class="row align-items-center">
+                <div class="col-3">
+                    <img width="100" class="mx-3 mt-2" src="assets/laundry.png" alt="" />
+                </div>
+              <div class="col-7">
+                <p-tag class="m-auto" value="En cours"></p-tag>
+                <div class="flex flex-column justify-content-center mt-3 text-center">
+                  <div>XW57698780</div>
+                  <div>30/12/2023</div>
+                </div>
+              </div>
+              <div class="col-1"><p-button (onClick)="peek()"><i class="pi pi-eye"></i></p-button></div>
+            </div>
+            <!-- {{item | json}} -->
+          </p-card>
+        </div>
+      </ng-template>
+    </p-dataView>
+  </p-card>
+</div>

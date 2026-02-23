@@ -1,0 +1,11 @@
+:host ::ng-deep {
+  .p-dataview-content, .p-dataview-header {
+    background: transparent;
+    border: none;
+    
+      .p-card{
+        backdrop-filter: blur(15px);
+        background: linear-gradient(#f0f5f9ad, #f0ffff66)
+      }
+  }
+}
