@@ -1,4 +1,4 @@
-<form class="p-fluid flex flex-column gap-3 w-full" (ngSubmit)="login()">
+<form class="p-fluid flex flex-column gap-4 w-full" (ngSubmit)="login()">
 
   <!-- Email -->
   <div class="flex flex-column gap-2 w-full">
@@ -26,4 +26,18 @@
   <button pButton type="submit" class="w-full" label="Se connecter" icon="pi pi-sign-in" [disabled]="!email || !password">
   </button>
 
+  <!-- Separator -->
+  <div class="flex align-items-center my-3">
+    <div class="flex-1 border-top-1 surface-border"></div>
+    <span class="px-3 text-color-secondary text-sm">OU</span>
+    <div class="flex-1 border-top-1 surface-border"></div>
+  </div>
+
+  <!-- Google -->
+  <button pButton type="button" class="w-full p-button-outlined" icon="pi pi-google" label="Continuer avec Google" (click)="loginWithGoogle()">
+  </button>
+
+  <!-- GitHub -->
+  <button pButton type="button" class="w-full p-button-outlined mt-2" icon="pi pi-github" label="Continuer avec GitHub" (click)="loginWithGithub()">
+  </button>
 </form>
