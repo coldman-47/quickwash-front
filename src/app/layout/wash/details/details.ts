@@ -27,8 +27,21 @@ export class Details {
   visible = false;
   laundry: Wash | null = null;
   user: any;
+  statuses = {
+    enAttente: false,
+    acceptee: false,
+    recue: false,
+    enCoursDeLavage: false,
+    essorage: false,
+    sechage: false,
+    termine: false,
+  };
 
-  constructor(private srv: WashService, cdr: ChangeDetectorRef, authSrv: AuthService) {
+  constructor(
+    private srv: WashService,
+    cdr: ChangeDetectorRef,
+    authSrv: AuthService,
+  ) {
     authSrv.user.subscribe({
       next: (user) => {
         this.user = user;
@@ -37,7 +50,7 @@ export class Details {
     srv.details.subscribe({
       next: (val) => {
         console.log(val);
-        
+
         this.laundry = val;
         // cdr.detectChanges();
         if (val) this.visible = true;

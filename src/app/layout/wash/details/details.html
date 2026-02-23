@@ -6,20 +6,48 @@
   >
     <ng-template #subtitle>Ref. {{ laundry?.reference }}</ng-template>
     <p-panel>
-      <p class="flex gap-2 align-items-center"><i class="pi pi-box"> </i>Poids(kg): {{ laundry?.weight }}</p>
-      <p class="flex gap-2 align-items-center"><i class="pi pi-palette"> </i>Couleur(s): {{ laundry?.colors }}</p>
+      <p class="flex gap-2 align-items-center">
+        <i class="pi pi-box"> </i>Poids(kg): {{ laundry?.weight }}
+      </p>
+      <p class="flex gap-2 align-items-center">
+        <i class="pi pi-palette"> </i>Couleur(s): {{ laundry?.colors }}
+      </p>
       {{ laundry?.clothes | json }}
     </p-panel>
-    <p-timeline [value]="steps" *ngIf="user.role === 'customer' else admin">
+    <p-timeline [value]="steps" *ngIf="user.role === 'customer'; else admin">
       <ng-template #content let-event>
         {{ event.status }}
       </ng-template>
     </p-timeline>
     <ng-template #admin>
-        <div class="flex items-center">
-                <p-checkbox inputId="ingredient1" name="status" value="Cheese" />
-                <label for="ingredient1" class="ml-2"> Acceptée </label>
-            </div>
+      <div class="flex items-center mt-4">
+        <p-checkbox inputId="ingredient1" name="status" value="En attente" [(ngModel)]="statuses.enAttente" />
+        <label for="ingredient1" class="ml-2"> En attente </label>
+      </div>
+      <div class="flex items-center">
+        <p-checkbox inputId="ingredient1" name="status" value="Acceptée" [(ngModel)]="statuses.acceptee" />
+        <label for="ingredient1" class="ml-2"> Acceptée </label>
+      </div>
+      <div class="flex items-center">
+        <p-checkbox inputId="ingredient1" name="status" value="Reçue" [(ngModel)]="statuses.recue" />
+        <label for="ingredient1" class="ml-2"> Reçue </label>
+      </div>
+      <div class="flex items-center">
+        <p-checkbox inputId="ingredient1" name="status" value="En cours de lavage" [(ngModel)]="statuses.enCoursDeLavage" />
+        <label for="ingredient1" class="ml-2"> En cours de lavage </label>
+      </div>
+      <div class="flex items-center">
+        <p-checkbox inputId="ingredient1" name="status" value="Essorage" [(ngModel)]="statuses.essorage" />
+        <label for="ingredient1" class="ml-2"> Essorage </label>
+      </div>
+      <div class="flex items-center">
+        <p-checkbox inputId="ingredient1" name="status" value="Séchage" [(ngModel)]="statuses.sechage" />
+        <label for="ingredient1" class="ml-2"> Séchage </label>
+      </div>
+      <div class="flex items-center">
+        <p-checkbox inputId="ingredient1" name="status" value="Terminée" [(ngModel)]="statuses.termine" />
+        <label for="ingredient1" class="ml-2"> Terminé </label>
+      </div>
     </ng-template>
     <ng-template #footer>
       Créé le {{ laundry?.createdAt | date: 'dd/MM/yyyy à h:mm' }}

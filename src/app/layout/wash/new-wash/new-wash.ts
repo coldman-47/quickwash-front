@@ -42,6 +42,15 @@ export class NewWash {
 
   create() {
     this.wash.clothes = this.categories;
+    this.wash.status =  {
+    enAttente: true,
+    acceptee: false,
+    recue: false,
+    enCoursDeLavage: false,
+    essorage: false,
+    sechage: false,
+    termine: false,
+  };;
     this.wash.reference = this.generateRef();
     this.srv.add(this.wash).subscribe({
       next: (val) => {

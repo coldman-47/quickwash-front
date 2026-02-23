@@ -17,7 +17,7 @@
                   <div>Ajoutée le {{item.createdAt | date: 'dd/MM/yyyy à h:mm'}}</div>
                 </div>
               </div>
-              <div class="col-1"><p-button (onClick)="peek(item)"><i class="pi pi-eye"></i></p-button></div>
+              <div class="col-1"><p-button [disabled]="!user" (onClick)="peek(item)"><i class="pi pi-eye"></i></p-button></div>
             </div>
             <!-- {{item | json}} -->
           </p-card>

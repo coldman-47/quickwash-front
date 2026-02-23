@@ -18,6 +18,7 @@ export class Wash {
   reference?: string;
   createdAt?: Date;
   colors?: number;
+  status?: any;
 
   constructor(clothes: any, weight: number) {
     this.clothes = clothes;
